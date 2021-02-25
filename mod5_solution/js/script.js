@@ -22,6 +22,7 @@ var menuItemsUrl =
   "https://davids-restaurant.herokuapp.com/menu_items.json?category=";
 var menuItemsTitleHtml = "snippets/menu-items-title.html";
 var menuItemHtml = "snippets/menu-item.html";
+var aboutHtmlUrl = "snippets/about.html";
 
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
@@ -115,7 +116,7 @@ function buildAndShowHomeHTML (categories) {
       // Hint: you need to surround the chosen category short name with something before inserting
       // it into the home html snippet.
       //
-      var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, randomCategoryShortName, chosenCategoryShortName);
+      var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", chosenCategoryShortName);
 
 
       // TODO: STEP 4: Insert the the produced HTML in STEP 3 into the main page
@@ -137,7 +138,6 @@ function chooseRandomCategory (categories) {
   return categories[randomArrayIndex];
 }
 
-
 // Load the menu categories view
 dc.loadMenuCategories = function () {
   showLoading("#main-content");
@@ -155,6 +155,31 @@ dc.loadMenuItems = function (categoryShort) {
     menuItemsUrl + categoryShort,
     buildAndShowMenuItemsHTML);
 };
+
+// Load about view
+dc.loadAboutView = function() {
+  showLoading("#main-content");
+  $ajaxUtils.sendGetRequest(
+    aboutHtmlUrl,
+    buildAndShowAboutHTML,
+    false);
+}
+
+// Builds HTML for the about page
+function buildAndShowAboutHTML(aboutHtml) {
+  var randomRating = Math.floor(Math.random() * 5) + 1;
+
+  for(var i = 1; i <= 5; i++) {
+    if(randomRating >= i) {
+      aboutHtml = insertProperty(aboutHtml, "star" + i, "fa fa-star");
+    }
+    else {
+      aboutHtml = insertProperty(aboutHtml, "star" + i, "far fa-star");
+    }
+  }
+  aboutHtml = insertProperty(aboutHtml, "ratingText", randomRating + "-star rating");
+  insertHtml("#main-content", aboutHtml);
+}
 
 
 // Builds HTML for the categories page based on the data
