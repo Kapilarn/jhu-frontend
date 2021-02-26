@@ -15,11 +15,11 @@ var dc = {};
 
 var homeHtmlUrl = "snippets/home-snippet.html";
 var allCategoriesUrl =
-  "https://davids-restaurant.herokuapp.com/categories.json";
+  "http://davids-restaurant.herokuapp.com/categories.json";
 var categoriesTitleHtml = "snippets/categories-title-snippet.html";
 var categoryHtml = "snippets/category-snippet.html";
 var menuItemsUrl =
-  "https://davids-restaurant.herokuapp.com/menu_items.json?category=";
+  "http://davids-restaurant.herokuapp.com/menu_items.json?category=";
 var menuItemsTitleHtml = "snippets/menu-items-title.html";
 var menuItemHtml = "snippets/menu-item.html";
 var aboutHtmlUrl = "snippets/about.html";
@@ -171,7 +171,7 @@ function buildAndShowAboutHTML(aboutHtml) {
 
   for(var i = 1; i <= 5; i++) {
     if(randomRating >= i) {
-      aboutHtml = insertProperty(aboutHtml, "star" + i, "fa fa-star");
+      aboutHtml = insertProperty(aboutHtml, "star" + i, "fas fa-star");
     }
     else {
       aboutHtml = insertProperty(aboutHtml, "star" + i, "far fa-star");
