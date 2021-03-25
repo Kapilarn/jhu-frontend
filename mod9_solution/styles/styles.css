@@ -1,0 +1,9 @@
+h1, h2 {
+  margin-bottom: 30px;
+}
+
+li[ui-sref]:hover {
+  font-size: 1.5em;
+  text-decoration: underline;
+  cursor: pointer;
+}
