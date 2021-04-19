@@ -1,0 +1,24 @@
+<div class="container info_panel">
+  <div ng-if="myInfoCtrl.userInfo.registered">
+  	<h1>Registration Info</h1>
+  	<br>
+  	<span>Name: {{ myInfoCtrl.userInfo.firstName }} {{ myInfoCtrl.userInfo.lastName }}</span>
+    <br>
+    <span>Email: {{ myInfoCtrl.userInfo.email }}</span>
+    <br>
+    <span>Phone: {{ myInfoCtrl.userInfo.phone }}</span>
+    <br><br>
+    <span>Favorite Menu:</span>
+    <br>
+    <div ng-if="myInfoCtrl.userInfo.favMenu.image_present">
+      <img ng-src="{{ myInfoCtrl.getFavMenuImgPath() }}">
+      <br>
+    </div>
+    <span>Dish: {{ myInfoCtrl.userInfo.favMenu.name }}</span>
+    <br>
+    <span>Description: {{ myInfoCtrl.userInfo.favMenu.description }}</span>
+  </div>
+  <div ng-if="!myInfoCtrl.userInfo.registered">
+  	<h2>Not Signed Up Yet. <a ui-sref="public.sign_up">Sign up Now!</a></h2>
+  </div>
+</div>
